@@ -14,6 +14,13 @@ Clone this repo and install dependencies. It's set-up to do so in any venv
     python brickseek.py -h 
     
 # Stores 
-Currently, the Brickseek API I created works with Target and Walmart. More stores can be integrated just ping me
+Currently, the Brickseek API works with 
+	Target
+	Walmart
+	Lowes
+	Office Depot
+	Staples
+
+More stores can be integrated
 
 Note: This API, like Brickseek, should NOT be used in stores to prove stock availability, quantity and/or price.

@@ -12,6 +12,12 @@ def Checker(upc,zipcode,stores,output=None):
             url = 'https://brickseek.com/target-inventory-checker'
         elif elem == 'Walmart':
             url = 'https://brickseek.com/walmart-inventory-checker'
+        elif elem == 'Lowes':
+            url = 'https://brickseek.com/lowes-inventory-checker'
+        elif elem == 'OfficeDepot':
+            url = 'https://brickseek.com/office-depot-inventory-checker/'
+        elif elem == 'Staples':
+            url = 'https://brickseek.com/staples-inventory-checker/'
         try:
             ret_dict[elem]= store_inventory(upc,zipcode,url)
         except:
@@ -57,15 +63,24 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get the Inventory and Price of Item\'s given a UPC value')
     parser.add_argument('--upc','-u',type=str, metavar='',required=True,help='UPC of the Item')
     parser.add_argument('--zip','-z',type=str, metavar='',required=True,help='Your Current ZipCode')
-    parser.add_argument('--stores','-s',type=str, metavar='',required=True,help='Stores You want to search In', choices=['a','w','t'])
+    parser.add_argument('--stores','-s',type=str, metavar='',required=True,help='Stores You want to search In', choices=['a','w','t','l','o','s'])
     parser.add_argument('--output','-o',type=str, metavar='',help='Output json to a given file')
     args=parser.parse_args()
     stores = []
     if args.stores =='a':
         stores.append('Walmart')
         stores.append('Target')
+        stores.append('Lowes')
+        stores.append('OfficeDepot')
+        stores.append('Staples')
     elif args.stores == 't':
         stores.append('Target')
     elif args.stores == 'w':
         stores.append('Walmart')
+    elif args.stores == 'l':
+        stores.append('Lowes')
+    elif args.stores == 'o':
+        stores.append('OfficeDepot')
+    elif args.stores == 's':
+        stores.append('Staples')
     Checker(args.upc,args.zip,stores,args.output)
